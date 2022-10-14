@@ -1,0 +1,33 @@
+version: '3'
+services:
+  backend:
+    image: flask-backend-docker:latest
+    hostname: backend
+    container_name: backend
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=mysql+pymysql://flask:flask@mariadb:3306/flask
+    ports:
+      - "80:5000"
+  mariadb:
+    image: mariadb:latest
+    hostname: mariadb
+    container_name: db
+    healthcheck:
+      test: "/usr/bin/mysql --user=flask --password=flask --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 1s
+      retries: 5
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: flask
+      MYSQL_USER: flask
+      MYSQL_PASSWORD: flask
+    volumes:
+      - mariadb-store:/var/lib/mysql
+volumes:
+  mariadb-store:
