@@ -5,9 +5,8 @@ from app.models import User
 bp = Blueprint('views', __name__)
 
 @bp.route('/')
-def index():
-    print(
-        User.query.all()
-    )
-    
-    return 'Hello, world!'
+def index():    
+    return [
+        user.serialize()
+        for user in User.query.all()
+    ]
