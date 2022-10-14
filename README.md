@@ -1,5 +1,7 @@
 # Flask Backend with MariaDB for Docker
 
+[![Docker CI](https://github.com/InspectorGadget/flask-backend-docker/actions/workflows/action.yml/badge.svg?branch=master)](https://github.com/InspectorGadget/flask-backend-docker/actions/workflows/action.yml)
+
 <b>NOTE:</b> Startup / Destruction scripts called `run.sh` and `delete.sh` is available in the project directory. You may utilise these scripts to effortlessly create and destroy the environment. 
 
 ## Pre-requisites
