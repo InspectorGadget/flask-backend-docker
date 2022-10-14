@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    image: flask-backend-docker:latest
+    image: inspectorgadget12/mariadb-flask-backend:latest
     hostname: backend
     container_name: backend
     depends_on:
